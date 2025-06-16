@@ -43,15 +43,17 @@ const page = () => {
         setIsCheckingUsername(true)
         setUsernameMessage('')
         try {
-            const response = await axios.get(`/api/auth/check-username-unique?username=${username}`)
+            const response = await axios.get(`/api/check-username-unique?username=${username}`)
             console.log(response.data.message);
             
-            let message = response.data.message
-            setUsernameMessage(message)
+            let messageUnique = response.data.message
+            console.log(messageUnique);
+            
+            setUsernameMessage(messageUnique);
         } catch (error) {
             const axiosError = error as AxiosError<ApiResponse>;
             setUsernameMessage(
-            axiosError.response?.data.message ?? "Error checking username uniqueness"
+            axiosError.response?.data.message ?? 'Error checking username'
             )
         } finally {
             setIsCheckingUsername(false)
@@ -107,8 +109,10 @@ const page = () => {
                 />
                 </FormControl>
                 {isCheckingUsername && <Loader2 className="animate-spin"/>}
-                <p className={`text-sm ${usernameMessage === "Username is available" ? "text-green-500" : "text-red-500"}`}>
-                    test {usernameMessage}
+                <p className={`text-sm ${usernameMessage === 'Username is unique'
+                            ? 'text-green-500'
+                            : 'text-red-500'}`}>
+                    {usernameMessage}
                 </p>
                 <FormMessage />
             </FormItem>
