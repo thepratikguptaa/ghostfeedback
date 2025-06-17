@@ -53,9 +53,9 @@ const page = () => {
         <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-md">
         <div className="text-center">
             <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl mb-6">
-            Join Ghost Feedback
+            Welcome Back
             </h1>
-            <p className="mb-4">Sign in to start your anonymous experience</p>
+            <p className="mb-4">Sign in to resume your anonymous experience</p>
         </div>
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
