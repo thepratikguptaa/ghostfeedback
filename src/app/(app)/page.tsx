@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 'use client'
 import * as React from "react"
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
