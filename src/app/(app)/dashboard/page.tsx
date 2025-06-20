@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 'use client'
 
-import MessageCard from "@/components/MessageCard";
+import { MessageCard } from "@/components/MessageCard";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Switch } from "@/components/ui/switch";
@@ -54,6 +54,7 @@ const dashboard = () => {
     setIsSwitchLoading(false);
     try {
       const response = await axios.get<ApiResponse>('/api/get-messages')
+      console.log('API /api/get-messages response:', response.data); // Debug log
       setMessages(response.data.messages || [])
       if (refresh) {
         toast.success('Messages refreshed successfully');
@@ -123,7 +124,7 @@ const dashboard = () => {
             disabled
             className="input input-bordered w-full p-2 mr-2"
           />
-          <Button onClick={copyToClipboard}>Copy</Button>
+          <Button className="cursor-pointer" onClick={copyToClipboard}>Copy</Button>
         </div>
       </div>
 
